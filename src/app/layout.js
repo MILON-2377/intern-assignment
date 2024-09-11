@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
             </div>
             <div className=" w-full">
               <Navbar />
-              <div className=" h-[250px] mt-8 p-2 overflow-y-scroll  scrollbar-thin custom-scrollbar scrollbar-thumb-gray-700 scrollbar-track-[#1f1f1f59]   ">
+              <div className="h-[250px] mt-8 custom-scrollbar p-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
                 {children}
               </div>
             </div>
