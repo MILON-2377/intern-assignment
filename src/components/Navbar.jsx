@@ -1,30 +1,27 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import AnimateNabLinks from "./AnimateNabLinks";
 
 export default function Navbar() {
   const path = usePathname();
+  const { push } = useRouter();
+
   return (
-    <div className=" w-full bg-black p-1 rounded-2xl flex items-center sm:gap-5 sm:justify-center justify-between ">
+    <div className="w-full bg-black p-2 rounded-2xl flex items-center sm:gap-5 sm:justify-center justify-between">
       {[...nabLinks].map((item, idx) => (
-        <Link
-          key={idx}
-          href={item.path}
-          className={` ${
-            item.path === path
-              ? " bg-gray-700 bg-opacity-50 font-semibold text-white"
-              : "text-gray-400 "
-          } sm:px-4 px-2 py-2 rounded-xl text-[10px] sm:text-sm `}
-        >
-          {item.title}
-        </Link>
+        <AnimateNabLinks
+          key={idx + 1}
+          item={item}
+          path={path}
+          push={push}
+        />
       ))}
     </div>
   );
 }
 
-// navber links
+// navbar links
 const nabLinks = [
   {
     title: "About me",
@@ -32,7 +29,7 @@ const nabLinks = [
   },
   {
     title: "Experience",
-    path: "/experinence",
+    path: "/experience",
   },
   {
     title: "Recommended",

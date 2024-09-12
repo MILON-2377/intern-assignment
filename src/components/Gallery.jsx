@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Element } from "react-scroll";
+import { motion } from "framer-motion";
 
 export default function Gallery() {
   const [images, setImages] = useState(Images);
@@ -39,7 +40,7 @@ export default function Gallery() {
     <div className="p-4">
       {/* Gallery Navigation */}
       <Element name="galleryNav">
-        <div className="flex sm:flex-row flex-col gap-5 sm:items-center justify-between">
+        <div className="flex sm:flex-row flex-col gap-5 sm:items-center justify-between px-2 ">
           <div className="px-4 py-3 text-sm rounded-xl text-white bg-black">
             Gallery
           </div>
@@ -62,13 +63,13 @@ export default function Gallery() {
             <div className=" gap-1 sm:w-[30%] flex items-center justify-between">
               <button
                 onClick={handleScrollLeft}
-                className="w-7 h-7 hover:bg-gray-700 hover:text-gray-300 rounded-full bg-black flex items-center justify-center"
+                className="w-7 h-7 duration-300 hover:bg-gray-700 hover:text-gray-300 rounded-full bg-black flex items-center justify-center"
               >
                 <IoIosArrowRoundBack className="text-2xl text-gray-400" />
               </button>
               <button
                 onClick={handleScrollRight}
-                className="w-7 h-7 hover:bg-gray-700 hover:text-gray-300 rounded-full bg-black flex items-center justify-center"
+                className="w-7 h-7 duration-300 hover:bg-gray-700 hover:text-gray-300 rounded-full bg-black flex items-center justify-center"
               >
                 <IoIosArrowRoundForward className="text-2xl text-gray-400" />
               </button>
@@ -81,18 +82,24 @@ export default function Gallery() {
       <Element name="imageGallery">
         <div
           ref={scrolRef}
-          className="flex items-center px-2 gap-5 overflow-x-scroll scroll-smooth no-scrollbar mt-8"
+          className="flex items-center px-4 py-8 gap-5 overflow-x-scroll scroll-smooth no-scrollbar "
         >
           {images?.map((item, idx) => (
-            <Image
+            <motion.div
               key={idx}
-              src={item}
-              alt={`Image ${idx + 1}`}
-              width={220}
-              height={200}
-              style={{ objectFit: "cover" }}
-              className="rounded-xl min-w-[220px] min-h-[200px] max-w-[221px] max-h-[201px]  "
-            />
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="rounded-xl relative overflow-hidden min-w-[220px] min-h-[200px] max-w-[221px] max-h-[201px]"
+            >
+              <Image
+                src={item}
+                alt={`Image ${idx + 1}`}
+                fill={true}
+                style={{ objectFit: "cover" }}
+                className="rounded-xl"
+              />
+            </motion.div>
           ))}
         </div>
       </Element>
