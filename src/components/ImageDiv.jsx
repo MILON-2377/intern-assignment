@@ -16,7 +16,7 @@ export default function ImageDiv() {
         <motion.div
           initial={false}
           animate={{ x: isHover ? "-100%" : "0%" }}
-          transition={{ duration: 0.4, 
+          transition={{ duration: 0.5, 
             damping: 500,
             ease: "easeInOut" }}
           className="w-full h-full absolute top-0 left-0"
@@ -28,7 +28,7 @@ export default function ImageDiv() {
         <motion.div
           initial={false}
           animate={{ x: isHover ? "0%" : "100%" }}
-          transition={{ duration: 0.4, ease: "easeInOut",
+          transition={{ duration: 0.5, ease: "easeInOut",
             damping:500
            }}
           className="w-full h-full a"
