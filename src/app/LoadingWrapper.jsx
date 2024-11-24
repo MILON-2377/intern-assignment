@@ -17,10 +17,11 @@ export default function LoadingWrapper({children}) {
 
     return () => clearInterval(timer);
   },[pathName]);
-  return (
+  
+  return(
     <>
     {loading && <LoadingSpinner />}
     {children}
     </>
-  )
+  );
 }
